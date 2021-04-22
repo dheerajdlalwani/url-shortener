@@ -1,0 +1,27 @@
+Making a URL Shortner
+- [ ] create flask app
+- [ ] make base.html page
+- [ ] make home.html page
+- [ ] add a form on home page
+- [ ] create a format/model/database 
+- [ ] create URL storing view
+- [ ] write function to generate shortned URL
+- [ ] write function to store shortned URL
+- [ ] write function to redirect 
+- [ ] write function to check if custom URL already exists
+- [ ] create view to add custom shortned URL
+- [ ] create a logo and a favicon
+- [ ] add CSS 
+- [ ] add user format/model/database
+- [ ] add user account functionality
+- [ ] page to view user's created URLs & click count
+- [ ] keep improving...
+
+
+
+
+
+
+
+
+
