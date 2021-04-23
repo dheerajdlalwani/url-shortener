@@ -1,0 +1,37 @@
+MongoDB
+  - get MongoDB Client URL
+
+Path to connect
+  - cluster -> collection -> database -> post
+  - code
+    MONGO_CLIENT = os.getenv('MONGO_CLIENT_URL_FROM_ENV')
+    cluster = MongoClient(MONGO_CLIENT)
+    db = cluster["database-name"]
+    collection = db["collection-name"]
+
+post
+  - a key-value pair collection
+  - python dictionary
+  - actual data which is supposed to be inserted
+
+How to insert
+  - collection.insert_one(post)
+  - collection.insert_many(list-of-posts))
+
+How to search
+  - collection.find({"search-parameter": key})
+  - returns a pymongo.cursor.Cursor object
+  - its a list of all the possible results
+  - loop through it for accessing each post
+  - How to search one
+    - collection.find_one({"search-parameter": key})
+    - returns one post
+
+
+- select * from table equivalent
+  - collection.find({})
+  - returns a pymongo.cursor.Cursor object
+  - its a list of all the possible results
+  - loop through it for accessing each post
+
+
