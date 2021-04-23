@@ -1,0 +1,11 @@
+<form action="" method="POST">
+    <label for="long_url">Enter Long URL: </label>
+    <input type="text" name="long_url" id="long_url">
+    <input type="submit" value="generate">
+    <br>
+    <hr>
+    {% if short_url %}
+    <label>Shortened URL: </label>
+    <a href="http://127.0.0.1:5000/{{ short_url }}" id="short_url" target="_blank"> 127.0.0.1:5000{{ short_url }} </a>
+    {% endif %}
+</form>
