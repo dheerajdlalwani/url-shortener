@@ -15,4 +15,3 @@ new_url = {
     "short_url": "",
     "click_count": 0
 }
-

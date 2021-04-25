@@ -1,39 +1,9 @@
 from flask import Flask, render_template, request, redirect
-import random
-import string
-# from models import *
-import os
-import pymongo
-from pymongo import MongoClient
-from dotenv import load_dotenv
-load_dotenv()
-
-
-MONGO_CLIENT = os.getenv('CLIENT')
-cluster = MongoClient(MONGO_CLIENT)
-db = cluster["URL-Shortener"]
-collection = db["url"]
-
-new_url = {
-    "long_url": "",
-    "short_url": "",
-    "click_count": 0
-}
-
-
+from models import *
+from helpers import *
 
 
 project = Flask(__name__)
-
-
-def get_short_url():
-    short_url = ''.join(random.SystemRandom().choice(
-        string.ascii_letters + string.digits) for _ in range(7))
-    result = collection.find_one({"short_url": short_url})
-    if(result != None):
-        get_short_url()
-    else:
-        return short_url
 
 
 @project.route('/', methods=['POST', 'GET'])
@@ -42,18 +12,22 @@ def home():
         print("Debug: Post Request here.")
         data = request.form
         long_url = data['long_url']
-        print("Debug: Recieved Long URL")
-        short_url = get_short_url()
-        print("Debug: Recieved Short URL")
-        print(f"User sent: {long_url}")
-        print(f"Short URL: {short_url}")
-        new_url = {
-            "long_url": long_url,
-            "short_url": short_url,
-            "click_count": 0
-        }
-        collection.insert_one(new_url)
-        return render_template('home.html', short_url=short_url, long_url=long_url)
+        if long_url != "":
+            print("Debug: Recieved Long URL")
+            short_url = get_short_url()
+            print("Debug: Recieved Short URL")
+            print(f"User sent: {long_url}")
+            print(f"Short URL: {short_url}")
+            new_url = {
+                "long_url": long_url,
+                "short_url": short_url,
+                "click_count": 0
+            }
+            collection.insert_one(new_url)
+            return render_template('home.html', short_url=short_url, long_url=long_url)
+        else:
+            message = "Please enter a long url!"
+            return render_template('home.html', message=message)
     else:
         return render_template('home.html')
 
