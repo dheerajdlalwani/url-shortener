@@ -4,6 +4,38 @@
 <h3> {{ message }} </h3>
 {% endif %}
 
+<style>
+    input, button
+    {
+        padding: 10px;
+        margin:10px;
+    }
+
+    input[type=text]
+    {
+        width: 50vw;
+    }
+
+
+
+</style>
+
+
+<script>
+    function copyShortUrl() 
+    {
+        var copyText = document.getElementById("short_url");
+        console.log(copyText)
+        copyText.removeAttribute("disabled")
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        copyText.setAttribute("disabled", "true")
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
+
+
 <form action="" method="POST">
     <label for="long_url">Enter Long URL: </label>
     <input type="text" name="long_url" id="long_url">
@@ -15,7 +47,11 @@
 <hr>
 <br>
 <label>Long URL: </label>
-<input type="text" disabled value="{{ long_url }}">
+<input type="text"  value="{{ long_url }}"> <br> 
 <label>Shortened URL: </label>
-<input type="text" disabled value="http://127.0.0.1:5000/{{ short_url }}">
+<input type="text" id="short_url" disabled value="https://url-shortener-flask-mongodb.herokuapp.com/{{ short_url }}" > 
+<button onclick="copyShortUrl()">Copy</button>
+
+
+
 {% endif %}
