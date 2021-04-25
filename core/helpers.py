@@ -1,7 +1,6 @@
 import random
 import string
-import models 
-from models import *
+from core.models import *
 
 
 def get_short_url():

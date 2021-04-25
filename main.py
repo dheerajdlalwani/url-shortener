@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
-import models 
-from models import *
-from helpers import *
+from core.models import *
+from core.helpers import *
+
 
 
 project = Flask(__name__)
