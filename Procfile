@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath core/main:project
+web: gunicorn core.main:project
