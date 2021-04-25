@@ -15,8 +15,10 @@ def home():
         long_url = data['long_url']
         if long_url != "":
             print("Debug: Recieved Long URL")
-            if long_url[0:8] != "http://" or long_url[0:9] != "https://":
-                long_url = "http://" + long_url 
+            if long_url[0:7] != "http://" and long_url[0:8] != "https://":
+                print(long_url[0:7])
+                long_url = "http://" + long_url
+                print(f"Maine new URL Ye banaya {long_url}")
             short_url = get_short_url()
             print("Debug: Recieved Short URL")
             print(f"User sent: {long_url}")
