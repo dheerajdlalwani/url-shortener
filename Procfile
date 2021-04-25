@@ -1,1 +1,1 @@
-web: gunicorn PYTHONPATH app:core/main
+web: gunicorn PYTHONPATH app:main
