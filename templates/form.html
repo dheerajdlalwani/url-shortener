@@ -27,8 +27,8 @@
         var copyText = document.getElementById("short_url");
         console.log(copyText)
         copyText.removeAttribute("disabled")
-        copyText.select();
         copyText.setSelectionRange(0, 99999);
+        copyText.select();
         document.execCommand("copy");
         copyText.setAttribute("disabled", "true")
         alert("Copied the text: " + copyText.value);
