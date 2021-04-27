@@ -36,7 +36,7 @@
 </script>
 
 
-<form action="" method="POST">
+<form action="/" method="POST">
     <label for="long_url">Enter Long URL: </label>
     <input type="text" name="long_url" id="long_url">
     <input type="submit" value="generate">
@@ -47,7 +47,7 @@
 <hr>
 <br>
 <label>Long URL: </label>
-<input type="text"  value="{{ long_url }}"> <br> 
+<input type="text" disabled value="{{ long_url }}"> <br> 
 <label>Shortened URL: </label>
 <input type="text" id="short_url" disabled value="https://url-shortener-flask-mongodb.herokuapp.com/{{ short_url }}" > 
 <button onclick="copyShortUrl()">Copy</button>

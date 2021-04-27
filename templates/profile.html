@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile: {{ user_email }}</title>
+{% endblock %}
+
+{% block body %}
+<h2>Hello {{ user_email }} </h2>
+
+{% if message %}
+<h3> {{ message }} </h3>
+{% endif %}
+
+
+<h3>Here your shortened links will be shown, along with click count.</h3>
+
+<table align="center" width="70%">
+    <tr>
+        <th>Long URL</th>
+        <th>Short URL</th>
+        <th>Click Count</th>
+    </tr>
+    {% for x in user_urls %}
+    <tr>
+        <td>{{ x.long_url }}</td>
+        <td>https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}</td>
+        <td>{{ x.click_count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}
