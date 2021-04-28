@@ -182,8 +182,8 @@ def transport(short_url):
         return render_template('home.html')
     url = url_collection.find_one({"short_url": short_url})
     if url != None:
-        user_collection.update_one({"short_url": short_url}, {
-                              "$inc": {"click_count": 1}})
+        url_collection.update_one({"short_url": short_url}, { "$inc": {"click_count": 1}})
+
         return redirect(url['long_url'])
     else:
         message = "Sorry, the requested URL was not found."
