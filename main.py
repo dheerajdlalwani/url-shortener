@@ -17,13 +17,24 @@ def home():
         print("Debug: Post Request here.")
         data = request.form
         long_url = data['long_url']
+        try:
+            custom_slug = data['custom_slug']
+        except:
+            custom_slug = ""
         if long_url != "":
             print("Debug: Recieved Long URL")
             if long_url[0:7] != "http://" and long_url[0:8] != "https://":
                 print(long_url[0:7])
                 long_url = "http://" + long_url
                 print(f"Maine new URL Ye banaya {long_url}")
-            short_url = get_short_url()
+            if custom_slug != "":
+                if check_custom_slug_availability(custom_slug):
+                    short_url = custom_slug
+                else:
+                    message = "Custom URL already taken."
+                    return render_template('home.html', message=message)                    
+            else:
+                short_url = get_short_url()
             print("Debug: Recieved Short URL")
             print(f"User sent: {long_url}")
             print(f"Short URL: {short_url}")

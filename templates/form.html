@@ -39,6 +39,13 @@
 <form action="/" method="POST">
     <label for="long_url">Enter Long URL: </label>
     <input type="text" name="long_url" id="long_url">
+    
+    {% if session['user'] %}
+    <h3>Want a custom slug? Fill in the field below. Or keep it empty for a system generated slug.</h3>
+    <label for="custom_slug">Enter Slug: https://url-shortener-flask-mongodb/</label>
+    <input type="text" name="custom_slug" id="custom_slug">
+    {% endif %}
+    <br>
     <input type="submit" value="generate">
 </form>
 
