@@ -56,3 +56,9 @@ def verify_password(stored_password, provided_password):
     return pwdhash == stored_password
 
 
+def check_custom_slug_availability(custom_slug):
+    result = url_collection.find_one({"short_url": custom_slug})
+    if(result != None):
+        return False
+    else:
+        return True
