@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*
+{
+    padding: 0;
+    margin: 0;
+    /* border: solid red 2px; */
+}
+
+html
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body
+{
+    background: #0F1212;
+    color: aliceblue;
+}
+
+header
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #6495ED;
+    margin: 1em;
+    padding: 1em;
+}
+
+
+nav
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+ul
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+nav ul > li
+{
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+nav ul > li > a
+{
+    text-decoration: none;
+    color: #6495ED;
+    padding: 5px;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+nav ul > li > a:hover
+{
+    text-decoration: none;
+    background-color: #6495ED;
+    color:  #0F1212;
+}
+
+
+main
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    margin: auto;
+    width: 75vw;
+}
+
+.form, .output
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    font-size: 1.25em;
+}
+
+
+.custom-slug-message
+{
+    margin: 1em;
+}
+
+.user
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1em;
+    font-size: 1em;
+}
+
+
+.user-greeting
+{
+    font-size:1.25em;
+    margin: 1em;
+}
+
+
+.form > input, .user > input, .output > input, .output > button, .user-short-url-copy
+{
+    width: 80%;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: solid #6495ED 2px;
+    background-color: #0F1212;
+    color: lightblue;
+    font-size: 1em;
+}
+
+
+.user > input
+{
+    margin-left: 0;
+}
+
+.form > input[type='submit'] , .user > input[type='submit'], .output > button, .user-short-url-copy
+{
+    color: aliceblue;
+    background-color: #6495ED;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.message, .copy-success-message, .user-copy-success-message
+{
+    border: dashed #6495ED 5px;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+
+.copy-success-message, .user-copy-success-message
+{
+    display: none;
+}
+
+.user-copy-success-message
+{
+    font-size: 0.5em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.hidden
+{
+    display: none;
+    /* height: 0px;
+    width: 0px; */
+}
+
+.user-urls-container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 90vw;
+    word-wrap: break-word;
+    margin: 1em;
+}
+
+.user-url
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: solid #6495ED 2px;
+    border-radius: 5px;
+    margin: 0.5em;
+    padding: 1em;
+    width: 20vw;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #6495ED;
+    position: relative;
+}
+
+.user-long-url, .user-short-url, .user-url-click-count
+{
+    font-size: 0.75em;
+    font-weight: 400;
+    margin: 0.5em;
+    color: aliceblue;
+}
+
+
+.user-short-url-copy
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0.5em;
+    font-size: 0.5em;
+    padding: 0.5em;
+    width: 40%;
+}
+
+
+@media screen and (max-width:480px)
+{
+    *
+    {
+        /* border: solid red 2px; */
+    }
+    main, header
+    {
+        /* border: solid red 2px; */
+        width: 90vw;
+        padding: 0.25em;
+        margin: auto;
+    }
+
+    header > h1
+    {
+        font-size:1.5em;
+    }
+
+    .form, .output
+    {
+        font-size: 1em;
+    }
+
+    .custom-slug-message
+    {
+        margin: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .user-urls-container
+    {
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+            }
+
+    .user-url
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: solid #6495ED 2px;
+        border-radius: 5px;
+        /* margin: auto; */
+        margin: 0.5em;
+        padding: 0.5em;
+        width: 80vw;
+        font-size: 1.25em;
+        font-weight: 700;
+    }
+
+    .user-long-url, .user-short-url, .user-url-click-count
+    {
+        font-size: 0.75em;
+        font-weight: 400;
+        margin: 0.5em;
+
+    }
+
+}
+

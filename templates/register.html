@@ -8,13 +8,16 @@
 <h2>Register to URL Shortener</h2>
 
 {% if message %}
-<h3> {{ message }} </h3>
+<section class="message">
+    <h3 class="message-content">{{ message }}</h3>
+</section>
 {% endif %}
 
-<form action="" method="POST">
-    <label for="email">Enter Email: </label>
+
+<form class="user" action="" method="POST">
+    <label for="email">Email</label>
     <input type="email" name="email" id="email">
-    <label for="password">Password: </label>
+    <label for="password">Password</label>
     <input type="password" name="password" id="password">
     <input type="submit" value="Register">
 </form>

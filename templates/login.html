@@ -8,14 +8,17 @@
 <h2>Login to URL Shortener</h2>
 
 {% if message %}
-<h3> {{ message }} </h3>
+<section class="message">
+    <h3 class="message-content">{{ message }}</h3>
+</section>
 {% endif %}
 
-<form action="/login/" method="POST">
-    <label for="email">Enter Email: </label>
-    <input type="email" name="email" id="email">
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password">
+
+<form class="user" action="/login/" method="POST">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Email">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Password">
     <input type="submit" value="Login">
 </form>
 {% endblock %}

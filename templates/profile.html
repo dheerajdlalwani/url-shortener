@@ -5,30 +5,33 @@
 {% endblock %}
 
 {% block body %}
-<h2>Hello {{ user_email }} </h2>
+<section class="user-greeting">
+    Hello {{ user_email }} 
+</section>
+
 
 {% if message %}
-<h3> {{ message }} </h3>
+<section class="message">
+    <h3 class="message-content">{{ message }}</h3>
+</section>
 {% endif %}
 
 
 <h3>Here your shortened links will be shown, along with click count.</h3>
 
-<table align="center" width="70%">
-    <tr>
-        <th>Long URL</th>
-        <th>Short URL</th>
-        <th>Click Count</th>
-    </tr>
+<section class="user-urls-container">
     {% for x in user_urls %}
-    <tr>
-        <td>{{ x.long_url }}</td>
-        <td>https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}</td>
-        <td>{{ x.click_count }}</td>
-    </tr>
+        <section class="user-url">
+            Long URL<span class="user-long-url">{{ x.long_url }}</span>
+            Short URL<span class="user-short-url" >https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}</span>
+            Click Count<span class="user-url-click-count">{{ x.click_count }}</span>
+            <input type="text" class="hidden" id="hidden-{{ x.short_url }}" value="https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}" class="copy{{ x.short_url }}">
+            <section class="user-copy-success-message message-{{ x.short_url }} ">
+                <h3 class="user-copy-success-message-content message-content-{{ x.short_url }}"></h3>
+            </section>
+            <button class="user-short-url-copy" id="{{ x.short_url }}" onclick="copyShortURLUser(this.id)">Copy Short URL</button>
+        </section>
     {% endfor %}
-</table>
-
-
+</section>
 
 {% endblock %}
