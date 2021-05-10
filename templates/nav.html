@@ -1,29 +1,12 @@
 <nav>
     <ul>
         <li><a href="/"> Home </a></li>
-        <li><a href="/user">Profile</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/register">Register</a></li>
+        {% if "user" in session %}
+            <li><a href="/user">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>    
+        {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        {% endif %}
     </ul>
 </nav>
-
-<style>
-    ul
-    {
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    ul > li
-    {
-        margin: 10px;
-        padding: 10px;
-    }
-
-
-</style>

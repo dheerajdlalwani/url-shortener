@@ -1,64 +1,40 @@
 <h2>Welcome to URL Shortener!</h2>
 
 {% if message %}
-<h3> {{ message }} </h3>
+<section class="message">
+    <h3 class="message-content">{{ message }}</h3>
+</section>
 {% endif %}
 
-<style>
-    input, button
-    {
-        padding: 10px;
-        margin:10px;
-    }
-
-    input[type=text]
-    {
-        width: 50vw;
-    }
 
 
 
-</style>
-
-
-<script>
-    function copyShortUrl() 
-    {
-        var copyText = document.getElementById("short_url");
-        console.log(copyText)
-        copyText.removeAttribute("disabled")
-        copyText.setSelectionRange(0, 99999);
-        copyText.select();
-        document.execCommand("copy");
-        copyText.setAttribute("disabled", "true")
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
-
-
-<form action="/" method="POST">
-    <label for="long_url">Enter Long URL: </label>
-    <input type="text" name="long_url" id="long_url">
+<form class="form" action="/" method="POST">
+    <label for="long_url">Enter Long URL</label>
+    <input type="text" name="long_url" id="long_url" autocomplete="off" placeholder="Long URL">
     
     {% if session['user'] %}
-    <h3>Want a custom slug? Fill in the field below. Or keep it empty for a system generated slug.</h3>
-    <label for="custom_slug">Enter Slug: https://url-shortener-flask-mongodb/</label>
-    <input type="text" name="custom_slug" id="custom_slug">
+    <p class="custom-slug-message">
+        Want a custom alias? Fill in the field below. <br> Or keep it empty for random alias.
+    </p>
+    <label for="custom_slug">Enter Alias: https://url-shortener-flask-mongodb/</label>
+    <input type="text" name="custom_slug" id="custom_slug" autocomplete="off" placeholder="Custom Alias">
     {% endif %}
     <br>
-    <input type="submit" value="generate">
+    <input type="submit" value="Generate Short URL">
 </form>
 
 {% if short_url %}
-<br>
-<hr>
-<br>
-<label>Long URL: </label>
-<input type="text" disabled value="{{ long_url }}"> <br> 
-<label>Shortened URL: </label>
-<input type="text" id="short_url" disabled value="https://url-shortener-flask-mongodb.herokuapp.com/{{ short_url }}" > 
-<button onclick="copyShortUrl()">Copy</button>
 
-
+<section class="output">
+    <label>Long URL</label>
+    <input type="text" disabled value="{{ long_url }}"> <br> 
+    <label>Shortened URL</label>
+    <input type="text" id="short_url" disabled value="https://url-shortener-flask-mongodb.herokuapp.com/{{ short_url }}" >
+    <section class="copy-success-message">
+        <h3 class="copy-success-message-content"></h3>
+    </section>
+    <button onclick="copyShortUrl()">Copy</button>
+</section>
 
 {% endif %}

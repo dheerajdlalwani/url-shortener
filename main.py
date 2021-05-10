@@ -3,13 +3,19 @@ from core.models import *
 from core.helpers import *
 import os
 from datetime import datetime, timedelta
+
 from dotenv import load_dotenv
 load_dotenv()
-
 
 SECRET = os.getenv('SECRET')
 project = Flask(__name__)
 project.secret_key = SECRET
+
+
+
+@project.context_processor
+def inject_today_date():
+    return {'now': datetime.now()}
 
 @project.route('/', methods=['POST', 'GET'])
 def home():

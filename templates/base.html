@@ -5,16 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a URL Shortener.">
+    <meta name="keywords" content="URL, URL Shortener, Links, URLs, urls, url shortener, url">
+    <meta name="author" content="Dheeraj Lalwani">
+    <meta name="twitter:title" content="Kata - The Only URL Shortener You Need.">
+    <meta name="twitter:description" content="This is a URL Shortener.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <meta name="twitter:site" content="@dhirucodes">
+    <meta name="twitter:creator" content="@dhirucodes">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}?ver={{ now }}">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
     {% block head %}{% endblock %}
-
-
 </head>
 
 <body>
-    <h1 align="center">URL Shortener</h1>
+    <header>
+        <h1>Kata - The only URL Shortener you need</h1>
+    </header>
     {% include 'nav.html' %}
-    {% block body %} {% endblock %}
+    <main>
+        {% block body %} {% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='copy.js') }}"></script>
 </body>
 
 
