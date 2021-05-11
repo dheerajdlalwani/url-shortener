@@ -55,7 +55,7 @@ nav ul > li
     padding: 0.5em;
 }
 
-nav ul > li > a
+nav ul > li > a, .redirect-home
 {
     text-decoration: none;
     color: #6495ED;

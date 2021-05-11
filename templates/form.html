@@ -6,6 +6,24 @@
 </section>
 {% endif %}
 
+
+
+{% if short_url %}
+
+<section class="output">
+    <label>Long URL</label>
+    <input type="text" disabled value="{{ long_url }}"> <br> 
+    <label>Shortened URL</label>
+    <input type="text" id="short_url" disabled value="https://kata-flask.herokuapp.com/{{ short_url }}" >
+    <section class="copy-success-message">
+        <h3 class="copy-success-message-content"></h3>
+    </section>
+    <button onclick="copyShortUrl()">Copy</button>
+    <a href="/" class="redirect-home">Shorten Another URL!</a>
+</section>
+
+{% else %}
+
 <form class="form" action="/" method="POST">
     <label for="long_url">Enter Long URL</label>
     <input type="text" name="long_url" id="long_url" autocomplete="off" placeholder="Long URL">
@@ -20,18 +38,5 @@
     <br>
     <input type="submit" value="Generate Short URL">
 </form>
-
-{% if short_url %}
-
-<section class="output">
-    <label>Long URL</label>
-    <input type="text" disabled value="{{ long_url }}"> <br> 
-    <label>Shortened URL</label>
-    <input type="text" id="short_url" disabled value="https://kata-flask.herokuapp.com/{{ short_url }}" >
-    <section class="copy-success-message">
-        <h3 class="copy-success-message-content"></h3>
-    </section>
-    <button onclick="copyShortUrl()">Copy</button>
-</section>
 
 {% endif %}
