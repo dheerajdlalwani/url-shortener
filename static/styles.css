@@ -148,9 +148,13 @@ main
 
 .message, .copy-success-message, .user-copy-success-message
 {
-    border: dashed #6495ED 5px;
+    /* border: dashed #6495ED 5px; */
+    background-color: aliceblue;
+    color: #0F1212;
+    border-radius: 5px;
     padding: 0.5em;
     margin: 0.5em;
+    font-size: 1em;
 }
 
 
