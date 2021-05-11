@@ -31,8 +31,11 @@ def home():
         except:
             custom_slug = ""
         if long_url != "":
+            if long_url[0:7] != "http://" and long_url[0:8] != "https://":
+                        print(long_url[0:7])
+                        long_url = "http://" + long_url
             if not validators.url(long_url):
-                message = "Invalid Long URL!"
+                message = "Invalid URL!"
                 return render_template('home.html', message=message)
             else:
                 if "kata-flask.herokuapp.com" in long_url:
@@ -40,10 +43,6 @@ def home():
                     return render_template('home.html', message=message)
                 else:
                     print("Debug: Recieved Long URL")
-                    if long_url[0:7] != "http://" and long_url[0:8] != "https://":
-                        print(long_url[0:7])
-                        long_url = "http://" + long_url
-                        print(f"Maine new URL Ye banaya {long_url}")
                     if custom_slug != "":
                         if custom_slug in FORBIDDEN_URLS or "kata-flask.herokuapp.com" in custom_slug:
                             message = "Invalid custom alias."
