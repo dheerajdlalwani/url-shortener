@@ -12,10 +12,12 @@ project = Flask(__name__)
 project.secret_key = SECRET
 
 
+FORBIDDEN_URLS = ["user", "login", "logout", "register", "user/", "login/", "logout/", "register/", "/user", "/login", "/logout", "/register", "/user/", "/login/", "/logout/", "/register/"]
 
 @project.context_processor
 def inject_today_date():
     return {'now': datetime.now()}
+
 
 @project.route('/', methods=['POST', 'GET'])
 def home():
@@ -28,40 +30,48 @@ def home():
         except:
             custom_slug = ""
         if long_url != "":
-            print("Debug: Recieved Long URL")
-            if long_url[0:7] != "http://" and long_url[0:8] != "https://":
-                print(long_url[0:7])
-                long_url = "http://" + long_url
-                print(f"Maine new URL Ye banaya {long_url}")
-            if custom_slug != "":
-                if check_custom_slug_availability(custom_slug):
-                    short_url = custom_slug
+            if "kata-flask.herokuapp.com" in long_url:
+                message = "Cannot shorten URLs from this domain."
+                return render_template('home.html', message=message)
+            else:
+                print("Debug: Recieved Long URL")
+                if long_url[0:7] != "http://" and long_url[0:8] != "https://":
+                    print(long_url[0:7])
+                    long_url = "http://" + long_url
+                    print(f"Maine new URL Ye banaya {long_url}")
+                if custom_slug != "":
+                    if custom_slug in FORBIDDEN_URLS or "kata-flask.herokuapp.com" in custom_slug:
+                        message = "Invalid custom alias."
+                        return render_template('home.html', message=message)                    
+                    else:
+                        if check_custom_slug_availability(custom_slug):
+                            short_url = custom_slug
+                        else:
+                            message = "Custom URL already taken."
+                            return render_template('home.html', message=message)                    
                 else:
-                    message = "Custom URL already taken."
-                    return render_template('home.html', message=message)                    
-            else:
-                short_url = get_short_url()
-            print("Debug: Recieved Short URL")
-            print(f"User sent: {long_url}")
-            print(f"Short URL: {short_url}")
-            print(session)
-            if "user" in session:
-                print("User is logged in. Fetching user email.")
-                user_email = (session_collection.find_one({"_id": session["user"]}))["email"]
-                new_url = {
-                    "user": user_email,
-                    "long_url": long_url,
-                    "short_url": short_url,
-                    "click_count": 0
-                }
-            else:
-                new_url = {
-                    "long_url": long_url,
-                    "short_url": short_url,
-                    "click_count": 0
-                }
-            url_collection.insert_one(new_url)
-            return render_template('home.html', short_url=short_url, long_url=long_url)
+                    short_url = get_short_url()
+                print("Debug: Recieved Short URL")
+                print(f"User sent: {long_url}")
+                print(f"Short URL: {short_url}")
+                print(session)
+                if "user" in session:
+                    print("User is logged in. Fetching user email.")
+                    user_email = (session_collection.find_one({"_id": session["user"]}))["email"]
+                    new_url = {
+                        "user": user_email,
+                        "long_url": long_url,
+                        "short_url": short_url,
+                        "click_count": 0
+                    }
+                else:
+                    new_url = {
+                        "long_url": long_url,
+                        "short_url": short_url,
+                        "click_count": 0
+                    }
+                url_collection.insert_one(new_url)
+                return render_template('home.html', short_url=short_url, long_url=long_url)
         else:
             message = "Please enter a long url!"
             return render_template('home.html', message=message)
@@ -151,7 +161,7 @@ def logout():
         print(f"User email in session: {user_email}")
         session_collection.delete_one({"_id": f"{user}"})
         session.pop('user', None)
-        message = f"User - {user_email} is logged out successfully."
+        message = f"User logged out successfully."
         print(f"User - {user_email} logged out.")
         return render_template('home.html', message=message)
     else:
@@ -191,6 +201,10 @@ def register():
     else:
         print("GET Request mili on login page.")
         return render_template('register.html')
+
+
+
+FORBIDDEN_URLS = ["user", "login", "logout", "register", "user/", "login/", "logout/", "register/", "/user", "/login", "/logout", "/register", "/user/", "/login/", "/logout/", "/register/"]
 
 
 @project.route('/<string:short_url>/', methods=['GET'])

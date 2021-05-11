@@ -81,17 +81,17 @@ main
     text-align: center;
     padding: 1em;
     margin: auto;
-    width: 75vw;
+    width: 90vw;
 }
 
-.form, .output
+.form, .output, .user
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 1em;
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 
@@ -100,15 +100,16 @@ main
     margin: 1em;
 }
 
-.user
+/* .user
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin: auto;
     margin-top: 1em;
-    font-size: 1em;
-}
+    font-size: 1.25em;
+} */
 
 
 .user-greeting
@@ -234,24 +235,29 @@ main
         width: 90vw;
         padding: 0.25em;
         margin: auto;
-        margin-top: 0.5em;
+        margin-top: 1em;
     }
 
     header > h1
     {
-        font-size:1.5em;
+        font-size:3em;
     }
 
     header > h2
     {
-        font-size:1em;
+        font-size:1.25em;
     }
-    
-
     .form, .output
     {
-        font-size: 1em;
+        font-size: 1.25em;
     }
+    
+    /* .form > input[type='submit'] , .user > input[type='submit'], .output > button, .user-short-url-copy
+    {
+        margin: 0.25em;
+        padding: 0.25em;
+    } */
+
 
     .custom-slug-message
     {
@@ -259,7 +265,6 @@ main
         margin-top: 1em;
         margin-bottom: 1em;
     }
-
     .user-urls-container
     {
         display: flex;
@@ -268,8 +273,7 @@ main
         justify-content: center;
         align-items: center;
         width: 90vw;
-            }
-
+    }
     .user-url
     {
         display: flex;
@@ -290,8 +294,5 @@ main
         font-size: 0.75em;
         font-weight: 400;
         margin: 0.5em;
-
     }
-
 }
-
