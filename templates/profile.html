@@ -23,9 +23,9 @@
     {% for x in user_urls %}
         <section class="user-url">
             Long URL<span class="user-long-url">{{ x.long_url }}</span>
-            Short URL<span class="user-short-url" >https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}</span>
+            Short URL<span class="user-short-url" >https://kata-flask.herokuapp.com/{{ x.short_url }}</span>
             Click Count<span class="user-url-click-count">{{ x.click_count }}</span>
-            <input type="text" class="hidden" id="hidden-{{ x.short_url }}" value="https://url-shortener-flask-mongodb.herokuapp.com/{{ x.short_url }}" class="copy{{ x.short_url }}">
+            <input type="text" class="hidden" id="hidden-{{ x.short_url }}" value="https://kata-flask.herokuapp.com/{{ x.short_url }}" class="copy{{ x.short_url }}">
             <section class="user-copy-success-message message-{{ x.short_url }} ">
                 <h3 class="user-copy-success-message-content message-content-{{ x.short_url }}"></h3>
             </section>
