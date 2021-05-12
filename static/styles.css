@@ -30,6 +30,13 @@ header
     padding: 1em;
 }
 
+.kata-main-title
+{
+    text-decoration: none;
+    color: #6495ED;
+    font-size: 1.5em;
+}
+
 
 nav
 {
@@ -84,6 +91,7 @@ main
     width: 90vw;
 }
 
+
 .form, .output, .user
 {
     display: flex;
@@ -92,6 +100,15 @@ main
     align-items: center;
     margin-top: 1em;
     font-size: 1.5em;
+}
+
+
+
+.kata-greeting
+{
+    color: #6495ED;
+    font-size: 1.25em;
+    font-weight: 700;
 }
 
 
@@ -149,18 +166,25 @@ main
 .message, .copy-success-message, .user-copy-success-message
 {
     /* border: dashed #6495ED 5px; */
-    background-color: aliceblue;
-    color: #0F1212;
+    background-color: rgb(253, 171, 171);
+    color: red;
     border-radius: 5px;
     padding: 0.5em;
     margin: 0.5em;
     font-size: 1em;
 }
 
+.auth-success-message
+{
+    background-color: rgb(19, 241, 167);
+    color: rgb(1, 61, 41);
+}
 
 .copy-success-message, .user-copy-success-message
 {
     display: none;
+    background-color: rgb(19, 241, 167);
+    color: rgb(1, 61, 41);
 }
 
 .user-copy-success-message

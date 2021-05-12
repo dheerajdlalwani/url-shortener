@@ -1,4 +1,5 @@
 let message = document.querySelector('.copy-success-message-content')
+
 if (message.innerText === "")
 {
     console.log("empty")
@@ -7,7 +8,6 @@ else
 {
     document.querySelector('.copy-success-message').style.display = 'block'
 }
-
 
 function selectText()
 {
@@ -21,13 +21,11 @@ function selectText()
     }
 }
 
-
-
 window.onload = selectText()
 
 function copyShortUrl() 
 {
-    var copyText = document.getElementById("short_url");
+    let copyText = document.getElementById("short_url");
     console.log(copyText)
     copyText.removeAttribute("disabled")
     copyText.setSelectionRange(0, 99999);
@@ -37,9 +35,6 @@ function copyShortUrl()
     document.querySelector('.copy-success-message').style.display = 'block'
     document.querySelector('.copy-success-message-content').innerText = "URL Copied!"
 }
-
-
-
 
 function copyShortURLUser(id)
 {

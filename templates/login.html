@@ -8,7 +8,7 @@
 <h2>Login to URL Shortener</h2>
 
 {% if message %}
-<section class="message">
+<section class="message{% if status %} auth-success-message {% endif %}">
     <h3 class="message-content">{{ message }}</h3>
 </section>
 {% endif %}

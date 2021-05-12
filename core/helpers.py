@@ -13,7 +13,6 @@ def get_short_url():
     else:
         return short_url
 
-
 def get_unique_user_id():
     user_id = ''.join(random.SystemRandom().choice(
         string.ascii_letters + string.digits + "_&*" ) for _ in range(7))
@@ -22,8 +21,6 @@ def get_unique_user_id():
         get_unique_user_id()
     else:
         return user_id
-
-
 
 def get_unique_session_id():
     session_id = ''.join(random.SystemRandom().choice(
@@ -34,15 +31,14 @@ def get_unique_session_id():
     else:
         return session_id
 
-
-
 def get_password_hash(password):
     salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
-    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), 
-                                salt, 100000)
+    pwdhash = hashlib.pbkdf2_hmac('sha512', 
+                                  password.encode('utf-8'), 
+                                  salt, 
+                                  100000)
     pwdhash = binascii.hexlify(pwdhash)
     return (salt + pwdhash).decode('ascii')
-
 
 
 def verify_password(stored_password, provided_password):
@@ -62,3 +58,5 @@ def check_custom_slug_availability(custom_slug):
         return False
     else:
         return True
+
+

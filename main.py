@@ -77,7 +77,7 @@ def home():
                     url_collection.insert_one(new_url)
                     return render_template('home.html', short_url=short_url, long_url=long_url)
         else:
-            message = "Please enter a long url!"
+            message = "Please enter a url!"
             return render_template('home.html', message=message)
     else:
         return render_template('home.html')
@@ -122,6 +122,7 @@ def login():
                     if verify_password(user['password'], password):
                         print("Their passwords matched too.")
                         message = "Logged in Successfully."
+                        status = "success"
                         print("Now doing some stuff for session.")
                         # TODO some stuff here for SESSION
                         print(f"Now setting the session cookie for the user: {email} ")
@@ -135,7 +136,7 @@ def login():
                         session_collection.insert_one(new_session)
                         session["user"] = new_session["_id"]
                         print(f"The system generated session_id: {session['user']} for the user: {email}")
-                        return render_template('home.html', message=message)
+                        return render_template('home.html', message=message, status=status)
                     else:
                         message = "Incorrect Password"
                         return render_template('login.html', message=message)
@@ -165,9 +166,10 @@ def logout():
         print(f"User email in session: {user_email}")
         session_collection.delete_one({"_id": f"{user}"})
         session.pop('user', None)
-        message = f"User logged out successfully."
+        message = "User logged out successfully."
+        status = "success"
         print(f"User - {user_email} logged out.")
-        return render_template('home.html', message=message)
+        return render_template('home.html', message=message, status=status)
     else:
         message = "User not logged in."
         return render_template('login.html', message=message)
@@ -193,7 +195,8 @@ def register():
                 }
                 user_collection.insert_one(new_user)
                 message = "Account Created Successfully."
-                return render_template('login.html', message=message)
+                status = "success"
+                return render_template('login.html', message=message, status=status)
             else:
                 message = "Account already exists."
                 return render_template('register.html', message=message)
