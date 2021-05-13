@@ -166,8 +166,8 @@ main
 .message, .copy-success-message, .user-copy-success-message
 {
     /* border: dashed #6495ED 5px; */
-    background-color: rgb(253, 171, 171);
-    color: red;
+    background-color: #ed4245;
+    color: white;
     border-radius: 5px;
     padding: 0.5em;
     margin: 0.5em;
@@ -176,15 +176,15 @@ main
 
 .auth-success-message
 {
-    background-color: rgb(19, 241, 167);
-    color: rgb(1, 61, 41);
+    background-color: #259949;
+    color: white;
 }
 
 .copy-success-message, .user-copy-success-message
 {
     display: none;
-    background-color: rgb(19, 241, 167);
-    color: rgb(1, 61, 41);
+    background-color: #259949;
+    color: white;
 }
 
 .user-copy-success-message
