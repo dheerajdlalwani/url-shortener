@@ -26,6 +26,7 @@
     </head>
 
     <body>
+        {% include 'github-corner.html' %}
         <header>
             <a href="/" class="kata-main-title"><h1>Kata</h1></a>
             <h2>The only URL Shortener you need</h2>
@@ -35,5 +36,8 @@
             {% block body %} {% endblock %}
         </main>
         <script src="{{ url_for('static', filename='copy.js') }}"></script>
+        <footer>
+            {% include 'footer.html' %}
+        </footer>
     </body>
 </html>

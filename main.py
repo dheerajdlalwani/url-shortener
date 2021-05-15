@@ -210,8 +210,18 @@ def register():
         return render_template('register.html')
 
 
+@project.route('/privacy/', methods=['GET'])
+def privacy():
+    return render_template('privacy.html')
 
-FORBIDDEN_URLS = ["user", "login", "logout", "register", "user/", "login/", "logout/", "register/", "/user", "/login", "/logout", "/register", "/user/", "/login/", "/logout/", "/register/"]
+
+@project.route('/about/', methods=['GET'])
+def about():
+    return render_template('about.html')
+
+
+
+FORBIDDEN_URLS = ["user", "login", "logout", "register", "privacy", "about", "user/", "login/", "logout/", "register/", "privacy/", "about/", "/user", "/login", "/logout", "/register", "/privacy", "/about", "/user/", "/login/", "/logout/", "/register/", "/privacy/", "/about/"]
 
 
 @project.route('/<string:short_url>/', methods=['GET'])
@@ -226,6 +236,11 @@ def transport(short_url):
     else:
         message = "Sorry, the requested URL was not found."
         return render_template('home.html', message=message)
+
+
+
+
+
 
 
 if __name__ == "__main__":

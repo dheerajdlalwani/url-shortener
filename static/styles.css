@@ -44,6 +44,7 @@ nav
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 1.5em;
 }
 
 ul
@@ -69,6 +70,7 @@ nav ul > li > a, .redirect-home
     padding: 5px;
     border-radius: 2px;
     font-weight: 700;
+    transition: all 0.25s;
 }
 
 nav ul > li > a:hover
@@ -98,7 +100,7 @@ main
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 0.5em;
     font-size: 1.5em;
 }
 
@@ -171,6 +173,7 @@ main
     border-radius: 5px;
     padding: 0.5em;
     margin: 0.5em;
+    margin-top: 1.5em;
     font-size: 1em;
 }
 
@@ -251,6 +254,162 @@ main
 }
 
 
+footer
+{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 1em;
+}
+
+.footer-content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+
+
+.dheeraj-github
+{
+    color: #6495ED;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.25em;
+    margin: 0.25em;
+    border-radius: 2px;
+    transition: all 0.25s;
+}
+
+
+
+
+.footer-links
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-links > a   
+{
+    text-decoration: none;
+    margin: 0.25em;
+    padding: 0.25em;
+    color: #6495ED;
+    font-size: 1em;
+    border-radius: 2px;
+    transition: all 0.25s;
+}
+
+.dheeraj-github:hover, .footer-links > a:hover
+{
+    background-color: #6495ED;
+    color: #0F1212;
+}
+
+
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+
+.privacy
+{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 1.5em;
+    margin: auto;
+    width: 70vw;
+}
+
+.privacy > .privacy-content > * > h4
+{
+    color: #6495ED;
+}
+
+.privacy > ul, .usage > ul
+{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:left;
+    margin: auto;
+    margin-top: 1em;
+}
+
+
+
+.privacy > ul > li, .usage > ul > li
+{
+    margin: 0.5em;
+    text-align: left;
+}
+
+.privacy-content
+{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+}
+
+.register, .use-services, .interact, .cookies, .children, .usage, .shared-info, .retention, .security, .choice, .contact
+{
+    margin: 0.5em;
+}
+
+.contact > a , .about-links
+{
+    color: #6495ED;
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 0.25em;
+    transition: all 0.25s;
+}
+
+.contact > a:hover, .about-links:hover
+{
+    background-color: #6495ED;
+    color:  #0F1212;
+}
+
+.about
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    width: 70vw;
+    padding: 1em;
+    
+}
+
+
 @media screen and (max-width:480px)
 {
     *
@@ -322,5 +481,34 @@ main
         font-size: 0.75em;
         font-weight: 400;
         margin: 0.5em;
+
+    }
+    .github-corner:hover .octo-arm
+    {
+        animation: none
+    }
+
+    .github-corner .octo-arm
+    {
+        animation: octocat-wave 560ms ease-in-out
+    }
+
+    .privacy 
+    {
+        font-size: 1em;
+        width: 90vw;
+        text-align: center;
+    }
+
+    .register, .use-services, .interact, .cookies, .children, .usage, .shared-info, .retention, .security, .choice, .contact
+    {
+        margin: 0.75em;
+        margin-top: 1em;
+    }
+
+    .about
+    {
+        /* text-align: center; */
+        width: 90vw;
     }
 }

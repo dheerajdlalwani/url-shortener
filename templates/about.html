@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Kata | About</title>
+{% endblock %}
+
+{% block body %}
+
+<h2>Welcome to - <span class="kata-greeting">Kata</span></h2>
+
+
+<section class="about">
+    
+Long URLs are really ugly. And by ugly I mean, REALLY UGLY. <br>
+On top of it, they are difficult to share and remember. <br> <br>
+What's the solution? <br><br>
+Creating a service that returns a shortened URL corresponding a long URL.
+The short URL, when visited must redirect to the the original long URL. <br><br>
+
+Kata does exactly the same for you, along with a few really helpful features. <br><br>
+
+Without logging in or registering,<br>
+you can use Kata to generate shortened URLs with a random alias,
+which will be functional 24/7 since the time of generation. <br> <br>
+
+But if you register with us, you can <br> <br>
+- Add a custom alias (OR keep it random) <br>
+- View all the URLs you shortened till date <br>
+- View how many times your shortened URL has been visited <br> <br>
+
+So what are you waiting for? <br> <br>
+<p>Register now on <a class="about-links" href="/register">Kata</a></p>   <br>
+
+
+This is just the phase 1 of the project. <br>
+<br>
+In the future, I have planned to make <br>
+- A REST API for the backend <br>
+- A Browser Extension (Chrome, Edge, Firefox & Brave) <br>
+- A client side rendered web app <br>
+- A QR Code for urls <br>
+- Optimizations to the database lookup by implementing a bloom filter <br>
+- Custom Previews <br>
+- URLs which can expire after certain time <br>
+- Editble custom  <br> <br>
+
+
+<p>Have more suggestions? <br> - Please raise an <a class="about-links" href="https://github.com/dheerajdlalwani/url-shortener/issues">issue</a></p>
+
+<br> <br>
+
+<p>Want to contribute?  <br> PRs are welcome! <a class="about-links" href="https://github.com/dheerajdlalwani/url-shortener">repository</a></p>
+
+
+</section>
+
+
+{% endblock %}

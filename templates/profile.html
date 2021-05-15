@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Profile: {{ user_email }}</title>
+<title>Kata | Profile: {{ user_email }}</title>
 {% endblock %}
 
 {% block body %}
@@ -9,13 +9,11 @@
     Hello {{ user_email }} 
 </section>
 
-
 {% if message %}
 <section class="message">
     <h3 class="message-content">{{ message }}</h3>
 </section>
 {% endif %}
-
 
 <h3>Here's your <span class="kata-greeting">Kata</span> dashboard</h3>
 
