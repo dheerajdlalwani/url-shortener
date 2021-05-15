@@ -342,9 +342,9 @@ footer
     display: flex;
     flex-direction: column;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1em;
     margin: auto;
-    width: 70vw;
+    width: 60vw;
 }
 
 .privacy > .privacy-content > * > h4
