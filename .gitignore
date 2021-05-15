@@ -1,5 +1,6 @@
 venv
 timepass.txt
+random-ideas
 
 *.pyc
 __pycache__/
