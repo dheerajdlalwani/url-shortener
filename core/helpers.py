@@ -2,7 +2,7 @@ import random
 import string
 from core.models import *
 import hashlib, binascii, os
-
+# import qrcode
 
 def get_short_url():
     short_url = ''.join(random.SystemRandom().choice(
@@ -12,6 +12,12 @@ def get_short_url():
         get_short_url()
     else:
         return short_url
+
+# def get_qr_code(long_url, short_url):
+#     generated_qr_code = qrcode.make(long_url)
+#     generated_qr_code.save('../static/IMG/'+short_url+'.png')
+#     # generated_qr_code.save(short_url + '.png')
+#     return generated_qr_code
 
 def get_unique_user_id():
     user_id = ''.join(random.SystemRandom().choice(

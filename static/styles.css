@@ -37,6 +37,9 @@ header
     font-size: 1.5em;
 }
 
+.id{
+    margin: 30px;
+}
 
 nav
 {
@@ -138,7 +141,7 @@ main
 }
 
 
-.form > input, .user > input, .output > input, .output > button, .user-short-url-copy
+.form > input, .user > input, .output > input, .output > button, .user-short-url-copy, textarea
 {
     width: 80%;
     border-radius: 5px;
