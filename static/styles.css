@@ -17,6 +17,11 @@ body
     background: #0F1212;
     color: aliceblue;
 }
+  
+.dark-mode {
+    background-color: white;
+    color: black;
+}
 
 header
 {
@@ -27,7 +32,6 @@ header
     text-align: center;
     color: #6495ED;
     margin: 1em;
-    padding: 1em;
 }
 
 .kata-main-title
@@ -37,9 +41,6 @@ header
     font-size: 1.5em;
 }
 
-.id{
-    margin: 30px;
-}
 
 nav
 {
@@ -58,6 +59,7 @@ ul
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-bottom: 0px !important;
 }
 
 nav ul > li
@@ -141,7 +143,7 @@ main
 }
 
 
-.form > input, .user > input, .output > input, .output > button, .user-short-url-copy, textarea
+.form > input, .form > textarea, #long, .user > input, .output > input, .output > button, .user-short-url-copy
 {
     width: 80%;
     border-radius: 5px;
@@ -154,6 +156,13 @@ main
 }
 
 
+
+.dark1{
+    background-color: white !important;
+    color: black !important;
+}
+
+
 .user > input
 {
     margin-left: 0;
@@ -161,10 +170,11 @@ main
 
 .form > input[type='submit'] , .user > input[type='submit'], .output > button, .user-short-url-copy
 {
-    color: aliceblue;
+    color: black;
     background-color: #6495ED;
     font-size: 1em;
     cursor: pointer;
+    font-weight: 600;
 }
 
 

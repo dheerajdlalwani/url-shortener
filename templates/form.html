@@ -8,7 +8,7 @@
 
 <section class="output">
     <label>Long URL</label>
-    <textarea rows="5" cols="50" disabled>{{ long_url }}</textarea>
+    <textarea id="long" rows="3" cols="50" disabled>{{ long_url }}</textarea>
     <br>
     <label>QR Code</label>
     <img id="qr" src= "{{qr_img}}" alt="Generated QR Code" width="200" height="200"/>
@@ -27,7 +27,7 @@
 <form class="form" action="/" method="POST">
     <label for="long_url">Enter Long URL</label>
     <!-- <input type="text" name="long_url" id="long_url" autocomplete="off" placeholder="Long URL"> -->
-    <textarea name="long_url" id="long_url" rows="5" cols="50" placeholder="Long URL" autocomplete="off"></textarea>
+    <textarea class="" id="dark2" name="long_url" id="long_url" rows="3" cols="50" placeholder="Long URL" autocomplete="off"></textarea>
     {% if session['user'] %}
     <p class="custom-slug-message">
         Want a custom alias? Fill in the field below. <br> Or keep it empty for random alias.

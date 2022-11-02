@@ -64,9 +64,6 @@ def home():
                         qrcode_location = f"{project.config['UPLOAD_FOLDER']}/{short_url}.png"
                         generated_qr_code = qrcode.make(long_url)
                         generated_qr_code.save(qrcode_location)
-                        # generated_qr_code.save(short_url + '.png')
-
-                        # generated_qr_code = get_qr_code(long_url, short_url)
                         d = cv2.QRCodeDetector()
                         decoded_qr = d.detectAndDecode(cv2.imread(f"{project.config['UPLOAD_FOLDER']}/{short_url}.png"))
                         qr_img = os.path.join(project.config['UPLOAD_FOLDER'], short_url + '.png')
