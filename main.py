@@ -4,6 +4,8 @@ from core.helpers import *
 import os
 from datetime import datetime, timedelta
 import validators
+import cv2
+import qrcode
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,6 +14,9 @@ SECRET = os.getenv('SECRET')
 project = Flask(__name__)
 project.secret_key = SECRET
 
+IMG_FOLDER = os.path.join('static', 'IMG')
+
+project.config['UPLOAD_FOLDER'] = IMG_FOLDER
 
 FORBIDDEN_URLS = ["user", "login", "logout", "register", "user/", "login/", "logout/", "register/", "/user", "/login", "/logout", "/register", "/user/", "/login/", "/logout/", "/register/"]
 
@@ -55,9 +60,17 @@ def home():
                                 return render_template('home.html', message=message)                    
                     else:
                         short_url = get_short_url()
+
+                        qrcode_location = f"{project.config['UPLOAD_FOLDER']}/{short_url}.png"
+                        generated_qr_code = qrcode.make(long_url)
+                        generated_qr_code.save(qrcode_location)
+                        d = cv2.QRCodeDetector()
+                        decoded_qr = d.detectAndDecode(cv2.imread(f"{project.config['UPLOAD_FOLDER']}/{short_url}.png"))
+                        qr_img = os.path.join(project.config['UPLOAD_FOLDER'], short_url + '.png')
                     print("Debug: Recieved Short URL")
                     print(f"User sent: {long_url}")
                     print(f"Short URL: {short_url}")
+                    print(f"QR decoded: {decoded_qr}")
                     print(session)
                     if "user" in session:
                         print("User is logged in. Fetching user email.")
@@ -75,7 +88,7 @@ def home():
                             "click_count": 0
                         }
                     url_collection.insert_one(new_url)
-                    return render_template('home.html', short_url=short_url, long_url=long_url)
+                    return render_template('home.html', short_url=short_url, long_url=long_url, qr_img=qr_img)
         else:
             message = "Please enter a url!"
             return render_template('home.html', message=message)

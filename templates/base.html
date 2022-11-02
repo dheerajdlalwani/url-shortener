@@ -1,43 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A URL Shortener.">
-        <meta name="keywords" content="URL, URL Shortener, Links, URLs, urls, url shortener, url">
-        <meta name="author" content="Dheeraj Lalwani">
-        <meta property="og:site_name" content="Kata">
-        <meta property="og:title" content="Kata">
-        <meta property="og:type" content="website">
-        <meta property="og:description" content="The Only URL Shortener You Need.">
-        <meta property="og:url" content="https://kata-flask.herokuapp.com/">
-        <meta property="og:image" content="{{ url_for('static', filename='favicon/og-image.png') }}">
-        <meta name="twitter:image" content="https://kata-flask.herokuapp.com/static/favicon/og-image.png">
-        <meta name="twitter:site" content="@dhirucodes">
-        <meta name="twitter:creator" content="@dhirucodes">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}?ver={{ now }}">
-        <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
-        <script data-ad-client="ca-pub-7625828260184314" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        {% block head %}{% endblock %}
-    </head>
 
-    <body>
-        {% include 'github-corner.html' %}
-        <header>
-            <a href="/" class="kata-main-title"><h1>Kata</h1></a>
-            <h2>The only URL Shortener you need</h2>
-            {% include 'nav.html' %}
-        </header>
-        <main>
-            {% block body %} {% endblock %}
-        </main>
-        <script src="{{ url_for('static', filename='copy.js') }}"></script>
-        <footer>
-            {% include 'footer.html' %}
-        </footer>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A URL Shortener.">
+    <meta name="keywords" content="URL, URL Shortener, Links, URLs, urls, url shortener, url">
+    <meta name="author" content="Dheeraj Lalwani">
+    <meta property="og:site_name" content="Kata">
+    <meta property="og:title" content="Kata">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="The Only URL Shortener You Need.">
+    <meta property="og:url" content="https://kata-flask.herokuapp.com/">
+    <meta property="og:image" content="{{ url_for('static', filename='favicon/og-image.png') }}">
+    <meta name="twitter:image" content="https://kata-flask.herokuapp.com/static/favicon/og-image.png">
+    <meta name="twitter:site" content="@dhirucodes">
+    <meta name="twitter:creator" content="@dhirucodes">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}?ver={{ now }}">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+    <script data-ad-client="ca-pub-7625828260184314" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {% block head %}{% endblock %}
+</head>
+
+<body onload="localStorageCheck()">
+    {% include 'github-corner.html' %}
+    <header>
+        <a href="/" class="kata-main-title">
+            <h1>Kata</h1>
+        </a>
+        <h2>The only URL Shortener you need</h2>
+        {% include 'nav.html' %}
+    </header>
+    <main>
+        {% block body %} {% endblock %}
+    </main>
+    <script src="{{ url_for('static', filename='copy.js') }}"></script>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+    <div class="form-check form-switch d-flex justify-content-end mx-4">
+        <input class="form-check-input" onclick="toggleMode()" type="checkbox" role="switch"
+            id="flexSwitchCheckDefault">
+        <label id="mode" class="form-check-label mx-2" for="flexSwitchCheckDefault">Enable Light Mode</label>
+    </div>
+</body>
+<script>
+    function localStorageCheck() {
+        let m = localStorage.getItem('mode');
+        if(m == 'light'){
+            toggleMode();
+            localStorage.setItem('mode', 'light');
+        }
+        else {
+            localStorage.setItem('mode', 'dark');
+            m = localStorage.getItem('mode');
+        }
+    }
+
+    function toggleMode() {
+        localStorage.setItem('mode', 'dark');
+        let element = document.body;
+        element.classList.toggle("dark-mode");
+        let form1 = document.getElementById("dark2");
+        let Aform1 = document.getElementById("Adark2");
+        let Lform1 = document.getElementsByClassName("Ldark2");
+        let Rform1 = document.getElementsByClassName("Rdark2");
+        let Oform1 = document.getElementsByClassName("Odark2");
+        if (form1 != null) {
+            form1.classList.toggle("dark1");
+        }
+        if (Aform1 != null) {
+            Aform1.classList.toggle("dark1");
+        }
+        else if (Lform1.length != 0) {
+            Lform1[0].classList.toggle("dark1");
+            Lform1[1].classList.toggle("dark1");
+        }
+        else if (Rform1.length != 0){
+            Rform1[0].classList.toggle("dark1");
+            Rform1[1].classList.toggle("dark1");
+        }
+        if (Oform1.length != 0){
+            Oform1[0].classList.toggle("dark1");
+            Oform1[1].classList.toggle("dark1");
+        }
+        let mode = document.getElementById("mode");
+        if(mode.innerText === "Enable Dark Mode")
+        {
+            mode.innerText = "Enable Light Mode";
+            localStorage.setItem('mode', 'dark');
+        }
+        else {
+            mode.innerText = "Enable Dark Mode";
+            localStorage.setItem('mode', 'light');
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
 </html>

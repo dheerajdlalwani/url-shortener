@@ -8,9 +8,13 @@
 
 <section class="output">
     <label>Long URL</label>
-    <input type="text" disabled value="{{ long_url }}">
+    <textarea id="long" class="Odark2" rows="3" cols="50" disabled>{{ long_url }}</textarea>
+    <br>
+    <label>QR Code</label>
+    <img id="qr" src= "{{qr_img}}" alt="Generated QR Code" width="200" height="200"/>
+    <br>
     <label>Shortened URL</label>
-    <input type="text" id="short_url" disabled value="https://kata-flask.herokuapp.com/{{ short_url }}" >
+    <input type="text" class="Odark2" id="short_url" disabled value="https://kata-flask.herokuapp.com/{{ short_url }}" >
     <section class="copy-success-message">
         <h3 class="copy-success-message-content"></h3>
     </section>
@@ -22,14 +26,14 @@
 
 <form class="form" action="/" method="POST">
     <label for="long_url">Enter Long URL</label>
-    <input type="text" name="long_url" id="long_url" autocomplete="off" placeholder="Long URL">
-    
+    <!-- <input type="text" name="long_url" id="long_url" autocomplete="off" placeholder="Long URL"> -->
+    <textarea class="" id="dark2" name="long_url" id="long_url" rows="3" cols="50" placeholder="Long URL" autocomplete="off"></textarea>
     {% if session['user'] %}
     <p class="custom-slug-message">
         Want a custom alias? Fill in the field below. <br> Or keep it empty for random alias.
     </p>
     <label for="custom_slug">Enter Alias: https://kata-flask.herokuapp.com/</label>
-    <input type="text" name="custom_slug" id="custom_slug" autocomplete="off" placeholder="Custom Alias">
+    <input type="text" id="Adark2" name="custom_slug" id="custom_slug" autocomplete="off" placeholder="Custom Alias">
     {% endif %}
     <br>
     <input type="submit" value="Generate Short URL">
