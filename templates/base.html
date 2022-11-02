@@ -32,7 +32,7 @@
     {% block head %}{% endblock %}
 </head>
 
-<body>
+<body onload="localStorageCheck()">
     {% include 'github-corner.html' %}
     <header>
         <a href="/" class="kata-main-title">
@@ -55,17 +55,54 @@
     </div>
 </body>
 <script>
+    function localStorageCheck() {
+        let m = localStorage.getItem('mode');
+        if(m == 'light'){
+            toggleMode();
+            localStorage.setItem('mode', 'light');
+        }
+        else {
+            localStorage.setItem('mode', 'dark');
+            m = localStorage.getItem('mode');
+        }
+    }
+
     function toggleMode() {
+        localStorage.setItem('mode', 'dark');
         let element = document.body;
         element.classList.toggle("dark-mode");
         let form1 = document.getElementById("dark2");
-        console.log(form1);
-        form1.classList.toggle("dark1");
+        let Aform1 = document.getElementById("Adark2");
+        let Lform1 = document.getElementsByClassName("Ldark2");
+        let Rform1 = document.getElementsByClassName("Rdark2");
+        let Oform1 = document.getElementsByClassName("Odark2");
+        if (form1 != null) {
+            form1.classList.toggle("dark1");
+        }
+        if (Aform1 != null) {
+            Aform1.classList.toggle("dark1");
+        }
+        else if (Lform1.length != 0) {
+            Lform1[0].classList.toggle("dark1");
+            Lform1[1].classList.toggle("dark1");
+        }
+        else if (Rform1.length != 0){
+            Rform1[0].classList.toggle("dark1");
+            Rform1[1].classList.toggle("dark1");
+        }
+        if (Oform1.length != 0){
+            Oform1[0].classList.toggle("dark1");
+            Oform1[1].classList.toggle("dark1");
+        }
         let mode = document.getElementById("mode");
         if(mode.innerText === "Enable Dark Mode")
-        {mode.innerText = "Enable Light Mode"}
+        {
+            mode.innerText = "Enable Light Mode";
+            localStorage.setItem('mode', 'dark');
+        }
         else {
-            mode.innerText = "Enable Dark Mode"
+            mode.innerText = "Enable Dark Mode";
+            localStorage.setItem('mode', 'light');
         }
     }
 </script>
